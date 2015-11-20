@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: opentsdb
+spec:
+  restartPolicy: Never
+  containers:
+    - name: tsdb
+      image: "test/opentsdb"
+      ports:
+        - name: http
+          containerPort: 4242
+          protocol: TCP
+      volumeMounts:
+      - mountPath: "/var/lib/hbase"
+        name: tsdb-pv
+  volumes:
+    - name: data
+      persistentVolumeClaim:
+        claimName: tsdb-claim
