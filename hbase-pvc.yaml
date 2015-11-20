@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: tsdb-claim
+  name: hbase-pvc
 spec:
   accessModes:
     - ReadWriteMany
